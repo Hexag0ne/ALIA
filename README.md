@@ -1,10 +1,10 @@
 # ALIA
+Prolog project where we aim to simulate the game Connect 4 (Puissance 4), with two competing AIs playing the game.
 
-Projet Puissance 4 en ProLog. 
 --
 #TODO
-+ Gérer affichage du plateau de jeu
-+ Détecter les situations de fin de jeu
-+ Programmer une intelligence artificielle
++ Handle display of the board
++ Handle gameover state
++ Implement the AI predicate
 
-Pour l'IA, commencer par une intelligence bidon (aléatoire) pour pouvoir juste tester les mécanismes du jeu.
+*Tip for the AI*: Start w/ a dummy algorithm (random) to try out the game's mechanics.
