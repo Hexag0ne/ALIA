@@ -19,7 +19,8 @@
 
 %%%%% play est une fonction récursive qui fait jouer alternativement les deux joueurs aux Puisance 4 jusqu'à ce que le jeu se termine.
 % Cette première règle est déclenchée si GameOver renvoie vrai et  interrompt l'autre règle récursive qui fait dérouler le jeu ( clause !).
-play(_):-gameOver(Grille, Colonne,Winner), !, writeln('Game over ! Winner is :' ), writeln(Winner), displayBoard(Grille).
+%play(_):- gameOver(Grille, Colonne, Winner), !, write('Game over ! Winner is: ' ), writeln(Winner), nl, displayBoard(Grille).
+%play(_):- displayBoard(Grille).
 
 % Règle générale récursive
 play(Player):- write('New turn for: '), writeln(Player),
@@ -41,4 +42,4 @@ playMove(Grille, ColonneJoue, Player, NouvelleGrille) :- NouvelleGrille = Grille
 
 %%% applyIt(Grille, NouvelleGrille)
 % Met à jour la grille de jeu dans la base de faits
-applyIt(Grille, NouvelleGrille):-retract(jeu(Grille)),assert(jeu(NouvelleGrille)).
+applyIt(Grille, NouvelleGrille):- retract(jeu(Grille)), assert(jeu(NouvelleGrille)).
