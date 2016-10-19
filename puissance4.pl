@@ -16,7 +16,7 @@ displayCol(Grille,X,Y) :- displayLine(Grille,X,Y), nl, Ya is Y - 1 , displayCol(
 
 %%% DisplayBoard
 % Fonction permettant d'afficher la grille de jeu
-displayBoard(Grille) :- X is 1, Y is 7, displayCol(Grille,X,Y). 
+displayBoard(Grille) :- X is 1, Y is 6, displayCol(Grille,X,Y).
 
 %%% GameOver(Grille, Colonne, Winner)
 % Cette règle doit être vraie si un joueur gagne ou si le jeu se termine en égalité.
@@ -28,5 +28,5 @@ gameOver(_, X, Winner):- Winner = 'Caramba', !.
 
 %%%nextPlayer(Player, Nextplayer)
 %Si le joueur courant est l'humain, le suivant est la machine et inversement !
-nextPlayer('H', 'M').
-nextPlayer('M', 'H').
+nextPlayer('x', 'o').
+nextPlayer('o', 'x').

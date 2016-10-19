@@ -19,26 +19,28 @@
 
 %%%%% play est une fonction récursive qui fait jouer alternativement les deux joueurs aux Puisance 4 jusqu'à ce que le jeu se termine.
 % Cette première règle est déclenchée si GameOver renvoie vrai et  interrompt l'autre règle récursive qui fait dérouler le jeu ( clause !).
-%play(_):- gameOver(Grille, Colonne, Winner), !, write('Game over ! Winner is: ' ), writeln(Winner), nl, displayBoard(Grille).
-%play(_):- displayBoard(Grille).
+%play(_) :- gameOver(Grille, Colonne, Winner), !, write('Game over ! Winner is: ' ), writeln(Winner), nl, displayBoard(Grille).
+%play(_) :- displayBoard(Grille).
 
 % Règle générale récursive
-play(Player):- write('New turn for: '), writeln(Player),
-			jeu(Grille),
-			displayBoard(Grille),
-			joue(Player, Grille, ColonneJoue), 
-			playMove(Grille, ColonneJoue, Player, NouvelleGrille), %On récupère le nouvel état de la grille.
-			applyIt(Grille, NouvelleGrille), %Remplace la grille du jeu dans la base de fait 'jeu'
-			nextPLayer(Player, NextPlayer),
-			play(NextPlayer).
+play(Player) :- write('New turn for: '), writeln(Player),
+			writeln('##jeu(Grille)##'), jeu(Grille),
+			writeln('##displayBoard(Grille)##'), displayBoard(Grille),
+			writeln('##joue##'), joue(Player, Grille, ColonneJoue),
+			writeln('##playMove##'), playMove(Grille, ColonneJoue, Player, NouvelleGrille), %On récupère le nouvel état de la grille.
+			writeln('##applyIt##'), applyIt(Grille, NouvelleGrille), %Remplace la grille du jeu dans la base de fait 'jeu'
+			writeln('##nextPlayer(Player, NextPlayer)##'), nextPlayer(Player, NextPlayer),
+			writeln('##play(NextPlayer)##'), play(NextPlayer).
 			
 %%%%% init permet de lancer le jeu. Cette règle permet d'initialiser le plateau de jeu et les joueurs. 
-init :- length(Board,9), assert(board(Board)), play('x').
+init :- length(Grille,9), assert(jeu(Grille)), play('x').
 
 %%% PlayMove(Grille, ColonneJoue, Player, NouvelleGrille)
 % Permet de placer le pion du joueur courant dans la grille actuelle et renvoie la nouvelle grille ainsi formée.
 % C'est cette fonction qui détermine quel caractère utiliser en fonction du joueur qui est passé en paramètre (humain X, machine O) !
-playMove(Grille, ColonneJoue, Player, NouvelleGrille) :- NouvelleGrille = Grille.
+playMove(Grille, ColonneJoue, Player, NouvelleGrille) :- addElem(Player, ColonneJoue).
+
+addEleme(Player, ColonneJoue) :-  
 
 %%% applyIt(Grille, NouvelleGrille)
 % Met à jour la grille de jeu dans la base de faits
