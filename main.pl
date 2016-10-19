@@ -27,8 +27,8 @@ play(Player) :- write('New turn for: '), writeln(Player),
 			writeln('##jeu(Grille)##'), jeu(Grille),
 			writeln('##displayBoard(Grille)##'), displayBoard(Grille),
 			writeln('##joue##'), joue(Player, Grille, ColonneJoue),
-			writeln('##playMove##'), playMove(Grille, ColonneJoue, Player, NouvelleGrille), %On récupère le nouvel état de la grille.
-			writeln('##applyIt##'), applyIt(Grille, NouvelleGrille), %Remplace la grille du jeu dans la base de fait 'jeu'
+			writeln('##playMove##'), playMove(Grille, ColonneJoue, Player, NewGrille), %On récupère le nouvel état de la grille.
+			writeln('##applyIt##'), applyIt(Grille, NewGrille), %Remplace la grille du jeu dans la base de fait 'jeu'
 			writeln('##nextPlayer(Player, NextPlayer)##'), nextPlayer(Player, NextPlayer),
 			writeln('##play(NextPlayer)##'), play(NextPlayer).
 			
@@ -38,10 +38,14 @@ init :- length(Grille,9), assert(jeu(Grille)), play('x').
 %%% PlayMove(Grille, ColonneJoue, Player, NouvelleGrille)
 % Permet de placer le pion du joueur courant dans la grille actuelle et renvoie la nouvelle grille ainsi formée.
 % C'est cette fonction qui détermine quel caractère utiliser en fonction du joueur qui est passé en paramètre (humain X, machine O) !
-playMove(Grille, ColonneJoue, Player, NouvelleGrille) :- addElem(Player, ColonneJoue).
+playMove(Grille, ColonneJoue, Player, NewGrille) :- majGrille(Player, ColonneJoue, NewGrille).
 
-addEleme(Player, ColonneJoue) :-  
+majGrille(Player, ColonneJoue, NewGrille) :-  jeu(Grille), nth1(ColonneJoue, Grille, OldColonne), ajouterCase(Player, OldColonne, NewColonne), IndiceCol is ColonneJoue-1, majColonne(X, IndiceCol, NewColonne, NewGrille).
 
-%%% applyIt(Grille, NouvelleGrille)
+%%% ajouterCase
+
+%%% majColonne
+
+%%% applyIt(Grille, NewGrille)
 % Met à jour la grille de jeu dans la base de faits
-applyIt(Grille, NouvelleGrille):- retract(jeu(Grille)), assert(jeu(NouvelleGrille)).
+applyIt(Grille, NewGrille):- retract(jeu(Grille)), assert(jeu(NewGrille)).
