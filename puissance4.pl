@@ -1,8 +1,35 @@
-:-module( puissance4, [nextPlayer/2, displayBoard/1, gameOver/3]).
+:-module( puissance4, [joueurSuivant/2, displayBoard/1, gameOver/3]).
+
+%Predicat qui permet de dessiner un élément
+displayElem(H) :- H = a, write('o'),  write(' | ').
+displayElem(H) :- H = b, write('x'),  write(' | ').
+displayElem(H) :- H \= a, H \= b, write(' '),  write(' | ').
+-
+%Predicat qui permet de dessiner une ligne
+displayLine(_,8,_).
+displayLine(Grille,X,Y) :-
+	nth1(X,Grille,Column),
+	nth1(Y,Column,Elem),
+	displayElem(Elem),
+	Xa is X+1,
+	displayLine(Grille,Xa,Y), !. 
+displayLine(Grille,X,Y) :-
+	displayElem(c) ,
+	Xa is X+1,
+	displayLine(Grille,Xa,Y), !. 
+
+%Predicat qui permet de dessiner toutes les colonnes.
+%Il dessine les lignes une par une et redessine par recursion
+displayCol(_,_,0).
+displayCol(Grille,X,Y) :-
+	displayLine(Grille,X,Y),
+	nl,
+	Ya is Y - 1 ,
+	displayCol(Grille,X,Ya), !.
 
 %%% DisplayBoard
-% Fonction permettant d'afficher la grille de jeu contenue dans
-displayBoard(Grille):-writeln('-------').
+% Fonction permettant d'afficher la grille de jeu
+displayBoard(Grille) :- X is 1, Y is 7, displayCol(Grille,X,Y). 
 
 
 %%% GameOver(Grille, Colonne, Winner)
@@ -80,7 +107,7 @@ gameOver(Grille,ColonneJouee, Winner):-
 	valeurGrille(Grille,ColonneJouee,Y,Winner),
 	valeurGrille(Grille,ColonneJouee-1,Y,Winner),
 	valeurGrille(Grille,ColonneJouee+1,Y,Winner),
-	valeurGrille(GrillenColonneJouee+2,Y,Winner),!.
+	valeurGrille(Grille,ColonneJouee+2,Y,Winner),!.
 %Cas horizontal 3 à droite
 gameOver(Grille,ColonneJouee, Winner):-
 	valeurGrille(Grille,ColonneJouee,Y,Winner),
@@ -94,13 +121,14 @@ gameOver(Grille,ColonneJouee, Winner):-
 	valeurGrille(Grille,ColonneJouee,Y-2,Winner),
 	valeurGrille(Grille,ColonneJouee,Y-3,Winner),!.
 %Cas d'égalité
-gameOver(Grille, _, 'Draw'):- grilleEstRemplie(Grille).
+%TODO décommenter l'égalité quand la détection de la grille remplie sera faite.
+%gameOver(Grille, _, 'Draw'):- grilleEstRemplie(Grille).
 %%%% fin GameOver %%%%
 
 
 %%%% grilleEstRemplie
-
-grilleEstRemplie([H|T]|) :- nth0(6,H,Y),nonvar(Y), isfull(T).
+% Cette règle devient vraie si la grille est entièrement remplie et qu'aucun coup supplémentaire ne peut y être joué.
+%grilleEstRemplie([H|T]|):- nth0(6,H,Y),nonvar(Y),isfull(T).
 %TODO
 
 %%% JoueurSuivant(joueur, joueurSuivant)
