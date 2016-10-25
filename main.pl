@@ -20,28 +20,35 @@
 %play(_) :- displayBoard(Grille).
 
 % Règle générale récursive
-play(Player) :-
+tourSuivant(Player) :-
 	write('New turn for: '), writeln(Player),
 	writeln('##jeu(Grille)##'), jeu(Grille),
 	writeln('##displayBoard(Grille)##'), afficherGrille(Grille),
 	writeln('##joue##'), joue(Player, Grille, ColonneJoue),
-	writeln('##playMove##'), playMove(Grille, ColonneJoue, Player, NouvGrille), %On récupère le nouvel état de la grille.
-	writeln('##applyIt##'), applyIt(Grille, NewGrille), %Remplace la grille du jeu dans la base de fait 'jeu'
-	writeln('##nextPlayer(Player, NextPlayer)##'), joueurSuivant(Player, NextPlayer),
-	writeln('##play(NextPlayer)##'), play(NextPlayer).
+	writeln('##jouerCoup##'), jouerCoup(Grille, ColonneJoue, Player, NouvGrille), %On récupère le nouvel état de la grille.
+	writeln('##sauverCoup##'), sauverCoup(Grille, NouvGrille), %Remplace la grille du jeu dans la base de fait 'jeu'
+	writeln('##joueurSuivant(Player, NextPlayer)##'), joueurSuivant(Player, NextPlayer),
+	writeln('##tourSuivnat(NextPlayer)##'), tourSuivant(NextPlayer).
 			
-%%%%% init permet de lancer le jeu. Cette règle permet d'initialiser le plateau de jeu et les joueurs. 
+%%% init permet de lancer le jeu. Cette règle permet d'initialiser le plateau de jeu et les joueurs. 
 init :- length(Grille,9), assert(jeu(Grille)), play('x').
 
-%%% PlayMove(Grille, ColonneJoue, Player, NouvelleGrille)
+%%% puissance4.AfficherGrille
+
+%%% play4.Joue
+
+%%% JouerCoup(Grille, ColonneJoue, Player, NouvelleGrille)
 % Permet de placer le pion du joueur courant dans la grille actuelle et renvoie la nouvelle grille ainsi formée.
 % C'est cette fonction qui détermine quel caractère utiliser en fonction du joueur qui est passé en paramètre (humain X, machine O) !
-playMove(Grille, ColonneJoue, Player, NouvGrille) :-
+jouerCoup(ColonneJoue, Player, NouvGrille) :-
 	majGrille(Player, ColonneJoue, NouvGrille).
+
+nthElem(N, L, []):- longueur(L, N1), N1 < N.
+nthElem(N, L, X):- nth1(N, L, X).
 
 majGrille(Player, ColonneJoue, NouvGrille) :-
     jeu(Grille),
-    nth1(ColonneJoue, Grille, OldColonne),
+    nthElem(ColonneJoue, Grille, OldColonne),
     ajouterCase(Player, OldColonne, NewColonne),
     IndiceCol is ColonneJoue-1,
     majColonne(X, IndiceCol, NewColonne, NouvGrille).
@@ -52,7 +59,13 @@ majGrille(Player, ColonneJoue, NouvGrille) :-
 %%% majColonne
 %TODO
 
-%%% applyIt(Grille, NewGrille)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% SauverCoup(Grille, NouvGrille)
 % Met à jour la grille de jeu dans la base de faits
-applyIt(Grille, NewGrille):-
+sauverCoup(Grille, NouvGrille):-
 	retract(jeu(Grille)), assert(jeu(NewGrille)).
+
+%%% puissance4.joueurSuivant
+
+%%% tourSuivant (Indice: C'est une boule !)
