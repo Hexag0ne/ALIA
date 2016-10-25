@@ -11,9 +11,9 @@ joueurSuivant('o','x').
 
 %%% AfficherElem
 %Predicat qui permet de dessiner un élément
-afficherElem(H) :- H = a, write('o'),  write(' | ').
-afficherElem(H) :- H = b, write('x'),  write(' | ').
-afficherElem(H) :- H \= a, H \= b, write(' '),  write(' | ').
+afficherElem(H) :- H = 'o', write('o'),  write(' | ').
+afficherElem(H) :- H = 'x', write('x'),  write(' | ').
+afficherElem(H) :- H \= 'x', H \= 'o', write(' '),  write(' | ').
 
 %%% AfficherLigne
 %Predicat qui permet le dessin d'une ligne
@@ -25,13 +25,13 @@ afficherLigne(Grille,X,Y) :-
 	Xa is X+1,
 	afficherLigne(Grille,Xa,Y), !. 
 afficherLigne(Grille,X,Y) :-
-	afficherElem(c) ,
+	afficherElem('f'),
 	Xa is X+1,
 	afficherLigne(Grille,Xa,Y), !. 
 
 %%% AfficherCol
 %Predicat qui permet le dessin des colonnes
-afficherCol(_,_,0).
+afficherCol(_,_,1).
 afficherCol(Grille,X,Y) :-
 	afficherLigne(Grille,X,Y),
 	nl,
