@@ -2,7 +2,7 @@
 % Ce fichier contient des méthodes utiles pour les autres modules du jeu.
 
 %%% Export du module util et de ses prédicats
-:-module(util,[getValeurGrille/4]).
+:-module(util,[valeurGrille/4]).
 
 %%%% valeurGrille(Grille,Colonne,Ligne,Valeur)
 %Permet de récupérer la valeur contenue dans le tableau de jeu situé dans la colonne et la ligne spécifié. 

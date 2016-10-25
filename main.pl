@@ -35,23 +35,22 @@ init :- length(Grille,9), assert(jeu(Grille)), play('x').
 
 %%% puissance4.AfficherGrille
 
-%%% play4.Joue
+%%% play.Joue
 
-%%% JouerCoup(Grille, ColonneJoue, Player, NouvelleGrille)
+%%% JouerCoup(Grille, ColonneJoue, Player, NouvGrille)
 % Permet de placer le pion du joueur courant dans la grille actuelle et renvoie la nouvelle grille ainsi formée.
 % C'est cette fonction qui détermine quel caractère utiliser en fonction du joueur qui est passé en paramètre (humain X, machine O) !
-jouerCoup(ColonneJoue, Player, NouvGrille) :-
-	majGrille(Player, ColonneJoue, NouvGrille).
+jouerCoup(Grille, ColonneJoue, Player, NouvGrille) :-
+	majGrille(Grille, ColonneJoue, Player, NouvGrille).
 
 nthElem(N, L, []):- longueur(L, N1), N1 < N.
 nthElem(N, L, X):- nth1(N, L, X).
 
-majGrille(Player, ColonneJoue, NouvGrille) :-
-    jeu(Grille),
+majGrille(Grille, ColonneJoue, Player, NouvGrille) :-
     nthElem(ColonneJoue, Grille, OldColonne),
-    ajouterCase(Player, OldColonne, NewColonne),
+    ajouterCase(Player, OldColonne, NouvColonne),
     IndiceCol is ColonneJoue-1,
-    majColonne(X, IndiceCol, NewColonne, NouvGrille).
+    majColonne(Grille, IndiceCol, NewColonne, NouvGrille).
 
 %%% ajouterCase
 %TODO
@@ -64,8 +63,9 @@ majGrille(Player, ColonneJoue, NouvGrille) :-
 %%% SauverCoup(Grille, NouvGrille)
 % Met à jour la grille de jeu dans la base de faits
 sauverCoup(Grille, NouvGrille):-
-	retract(jeu(Grille)), assert(jeu(NewGrille)).
+	retract(jeu(Grille)), assert(jeu(NouvGrille)).
 
 %%% puissance4.joueurSuivant
 
-%%% tourSuivant (Indice: C'est une boule !)
+%%% tourSuivant (Indice: C'est une boucle !)
+

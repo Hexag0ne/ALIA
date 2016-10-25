@@ -6,8 +6,8 @@
 
 %%% JoueurSuivant(joueur, joueurSuivant)
 %Si le joueur courant est l'humain, le suivant est la machine et inversement !
-joueurSuivant('H','M').
-joueurSuivant('M','H').
+joueurSuivant('x','o').
+joueurSuivant('o','x').
 
 %%% AfficherElem
 %Predicat qui permet de dessiner un élément
