@@ -1,35 +1,46 @@
-:-module( puissance4, [joueurSuivant/2, displayBoard/1, gameOver/3]).
+%%%%% fichier puissance4.pl
+% Ce fichier contient les mécanismes d'affichage du tableau de jeu, passage au tour suivant, et fin de jeu.
 
+%%% Export du module puissance4 et de ses prédicats
+:-module( puissance4, [joueurSuivant/2, afficherGrille/1, gameOver/3]).
+
+%%% JoueurSuivant(joueur, joueurSuivant)
+%Si le joueur courant est l'humain, le suivant est la machine et inversement !
+joueurSuivant('H','M').
+joueurSuivant('M','H').
+
+%%% AfficherElem
 %Predicat qui permet de dessiner un élément
-displayElem(H) :- H = a, write('o'),  write(' | ').
-displayElem(H) :- H = b, write('x'),  write(' | ').
-displayElem(H) :- H \= a, H \= b, write(' '),  write(' | ').
--
-%Predicat qui permet de dessiner une ligne
-displayLine(_,8,_).
-displayLine(Grille,X,Y) :-
+afficherElem(H) :- H = a, write('o'),  write(' | ').
+afficherElem(H) :- H = b, write('x'),  write(' | ').
+afficherElem(H) :- H \= a, H \= b, write(' '),  write(' | ').
+
+%%% AfficherLigne
+%Predicat qui permet le dessin d'une ligne
+afficherLigne(_,8,_).
+afficherLigne(Grille,X,Y) :-
 	nth1(X,Grille,Column),
 	nth1(Y,Column,Elem),
-	displayElem(Elem),
+	afficherElem(Elem),
 	Xa is X+1,
-	displayLine(Grille,Xa,Y), !. 
-displayLine(Grille,X,Y) :-
-	displayElem(c) ,
+	afficherLigne(Grille,Xa,Y), !. 
+afficherLigne(Grille,X,Y) :-
+	afficherElem(c) ,
 	Xa is X+1,
-	displayLine(Grille,Xa,Y), !. 
+	afficherLigne(Grille,Xa,Y), !. 
 
-%Predicat qui permet de dessiner toutes les colonnes.
-%Il dessine les lignes une par une et redessine par recursion
-displayCol(_,_,0).
-displayCol(Grille,X,Y) :-
-	displayLine(Grille,X,Y),
+%%% AfficherCol
+%Predicat qui permet le dessin des colonnes
+afficherCol(_,_,0).
+afficherCol(Grille,X,Y) :-
+	afficherLigne(Grille,X,Y),
 	nl,
 	Ya is Y - 1 ,
-	displayCol(Grille,X,Ya), !.
+	afficherCol(Grille,X,Ya), !.
 
-%%% DisplayBoard
-% Fonction permettant d'afficher la grille de jeu
-displayBoard(Grille) :- X is 1, Y is 7, displayCol(Grille,X,Y). 
+%%% AfficherGrille
+% Fonction qui permet l'affichage du plateau de jeu
+afficherGrille(Grille) :- X is 1, Y is 7, afficherCol(Grille,X,Y). 
 
 
 %%% GameOver(Grille, Colonne, Winner)
@@ -125,14 +136,7 @@ gameOver(Grille,ColonneJouee, Winner):-
 %gameOver(Grille, _, 'Draw'):- grilleEstRemplie(Grille).
 %%%% fin GameOver %%%%
 
-
 %%%% grilleEstRemplie
 % Cette règle devient vraie si la grille est entièrement remplie et qu'aucun coup supplémentaire ne peut y être joué.
 %grilleEstRemplie([H|T]|):- nth0(6,H,Y),nonvar(Y),isfull(T).
 %TODO
-
-%%% JoueurSuivant(joueur, joueurSuivant)
-%Si le joueur courant est l'humain, le suivant est la machine et inversement !
-joueurSuivant('H','M').
-joueurSuivant('M','H').
-
