@@ -19,15 +19,9 @@
 jeu([['n'],['n'],['n'],['n'],['n'],['n'],['n'],['n'],['n']]).
 
 %%%%% tourSuivant est une fonction récursive qui fait jouer alternativement les deux joueurs aux Puisance 4 jusqu'à ce que le jeu se termine.
-% Cette première règle est déclenchée si GameOver renvoie vrai et interrompt l'autre règle récursive qui fait dérouler le jeu ( clause !).
-tourSuivant(Joueur,Colonne) :- joueurSuivant(Winner,Joueur),jeu(Grille),gameOver(Grille,Colonne,Winner),!,
-	write('Game over ! Le gagnant est: ' ),
-	writeln(Winner), nl,
-	afficherGrille(Grille).
-%tourSuivant(_) :- afficherGrille(Grille).
 
-% Règle générale récursive
-tourSuivant(Joueur,Colonne) :-
+% Règle générale récursive qui fait jouer les joueurs chacun leur tour
+tourSuivant(Joueur,_) :-
 	write('Nouveau tour pour: '), writeln(Joueur),
 	jeu(Grille), %% grille = getGrille()
 	afficherGrille(Grille), %puissance4.pl
@@ -35,7 +29,16 @@ tourSuivant(Joueur,Colonne) :-
 	jouerCoup(ColonneJoue, Joueur),
 	joueurSuivant(Joueur, NextJoueur), %puissance4.pl
 	tourSuivant(NextJoueur,ColonneJoue).
-			
+% Cette première règle est déclenchée si GameOver renvoie vrai et interrompt l'autre règle récursive qui fait dérouler le jeu ( clause !).
+tourSuivant(Joueur,Colonne) :-
+	joueurSuivant(Winner,Joueur),
+	jeu(Grille),
+	gameOver(Grille,Colonne,Winner),!,
+	write('Game over ! Le gagnant est: ' ),
+	writeln(Winner), nl,
+	afficherGrille(Grille).
+
+
 %%% init permet de lancer le jeu. Cette règle permet d'initialiser le plateau de jeu et les joueurs. 
 init :- tourSuivant('x',0).
 
