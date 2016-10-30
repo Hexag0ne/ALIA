@@ -9,9 +9,10 @@
 %Attention la grille est supposée avoir une ligne vide en-dessous inutilisée et deux colonnes inutilisés sur les côtés gauche et droit.
 %Les indices valables pour la ligne : [1,6]
 %Les indices valvables pour la colonne : [1,7]
-valeurGrille(Grille,numCol,numLigne,Valeur):-
-    nth0(numCol,Grille,Colonne), nth0(numLigne,Colonne,Valeur).
-
+valeurGrille(G,C,L,V):-
+	nth0(C,G,Cl),
+	nth0(L,Cl,V).
+	
 %%% AjouterCase
 %Ajoute une valeur à la fin d'une liste passée en paramètre
 %Pseudo-code: NouvColonne = OldColonne.append(Player)
