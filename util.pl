@@ -2,7 +2,7 @@
 % Ce fichier contient des méthodes utiles pour les autres modules du jeu.
 
 %%% Export du module util et de ses prédicats
-:-module(util, [valeurGrille/4, ajouterCase/3, majColonne/4]).
+:-module(util, [valeurGrille/4, ajouterCase/3, majColonne/4, colonneRemplie/1]).
 
 %%%% valeurGrille(Grille,Colonne,Ligne,Valeur)
 %Permet de récupérer la valeur contenue dans le tableau de jeu situé dans la colonne et la ligne spécifié. 
@@ -25,3 +25,8 @@ ajouterCase(X,[Y|L1],[Y|L2]):- ajouterCase(X,L1,L2), length([Y|L1],N), N<7 .
 majColonne([_|T], 0, X, [X|T]).
 majColonne([H|T], I, X, [H|R]):- I > -1, NI is I-1, majColonne(T, NI, X, R), !.
 majColonne(L, _, _, L).
+
+% Détermine si une colonne est bien remplie.
+% Dans notre situation, cela signifie que la colonne contient 8 termes
+colonneRemplie(Colonne):-
+	proper_length(Colonne,8).
