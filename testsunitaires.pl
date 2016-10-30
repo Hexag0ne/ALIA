@@ -19,7 +19,8 @@ testAjouterCase :-
 
 %Test de valeurGrille/4
 testValeurGrille :-
-	valeurGrille([_,[n,'x'],_,_,_,_,_,_,_],1,1,'x').
+	valeurGrille([['n'],['n','x'],['n'],['n'],['n'],['n'],['n'],['n'],['n']],1,1,'x'),
+	not(valeurGrille([['n'],['n','x'],['n'],['n'],['n'],['n'],['n'],['n'],['n']],5,1,'x')).
 
 %%%% Tests du module puissance4
 %Test de joueurSuivant/2
