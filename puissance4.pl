@@ -151,7 +151,6 @@ gameOver(Grille,ColonneJouee,Winner):-
 	valeurGrille(Grille,ColonneJouee+2,Y,Winner),
 	valuerGrille(Grille,ColonneJouee+3,Y,Winner),!.
 %Cas vertical
-<<<<<<< HEAD
 gameOver(Grille,numCol,Winner):-
 	nth0(numCol,Grille,ColonneJouee),
 	proper_length(ColonneJouee, Z), Y is Z-1,
