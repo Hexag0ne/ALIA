@@ -16,7 +16,7 @@
 
 % Le jeu est 'global' et peut être modifié par assert et retract (ajoute une affirmation / vérité / prédicat ou supprime une affirmation / vérité / prédicat) de la base de connaissance de l'état du jeu.
 :- dynamic jeu/1.
-jeu([['n'],['n'],['n'],['n'],['n'],['n'],['n']]).
+jeu([[],[],[],[],[],[],[]]).
 
 %%%%% tourSuivant est une fonction récursive qui fait jouer alternativement les deux joueurs aux Puisance 4 jusqu'à ce que le jeu se termine.
 % Cette première règle est déclenchée si GameOver renvoie vrai et interrompt l'autre règle récursive qui fait dérouler le jeu ( clause !).
@@ -27,7 +27,6 @@ tourSuivant(Joueur,Colonne) :-
 	write('Game over ! Le gagnant est: ' ),
 	writeln(Winner), nl,
 	afficherGrille(Grille).
-
 
 % Règle générale récursive qui fait jouer les joueurs chacun leur tour
 tourSuivant(Joueur,_) :-

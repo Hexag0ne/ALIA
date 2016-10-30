@@ -33,7 +33,7 @@ afficherLigne(Grille,X,Y) :-
 
 %%% AfficherCol
 %Predicat qui permet le dessin des colonnes
-afficherCol(_,_,1).
+afficherCol(_,_,0).
 afficherCol(Grille,X,Y) :-
 	afficherLigne(Grille,X,Y),
 	nl,
@@ -42,7 +42,7 @@ afficherCol(Grille,X,Y) :-
 
 %%% AfficherGrille
 % Fonction qui permet l'affichage du plateau de jeu
-afficherGrille(Grille) :- X is 1, Y is 7, afficherCol(Grille,X,Y). 
+afficherGrille(Grille) :- X is 1, Y is 6, afficherCol(Grille,X,Y). 
 
 
 %%% GameOver(Grille, Colonne, Winner)
