@@ -4,6 +4,8 @@
 %%% Export du module puissance4 et de ses prédicats
 :-module( puissance4, [joueurSuivant/2, afficherGrille/1, gameOver/3]).
 
+:-use_module('util.pl').
+
 %%% JoueurSuivant(joueur, joueurSuivant)
 %Si le joueur courant est l'humain, le suivant est la machine et inversement !
 joueurSuivant('x','o').
@@ -137,18 +139,24 @@ gameOver(Grille,ColonneJouee,Winner):-
 	valeurGrille(Grille,ColonneJouee+2,Y,Winner),
 	valuerGrille(Grille,ColonneJouee+3,Y,Winner),!.
 %Cas vertical
-gameOver(Grille,ColonneJouee,Winner):-
+gameOver(Grille,numCol,Winner):-
+	nth0(numCol,Grille,ColonneJouee),
 	proper_length(ColonneJouee, Z), Y is Z-1,
-	valeurGrille(Grille,ColonneJouee,Y,Winner),
-	valeurGrille(Grille,ColonneJouee,Y-1,Winner),
-	valeurGrille(Grille,ColonneJouee,Y-2,Winner),
-	valeurGrille(Grille,ColonneJouee,Y-3,Winner),!.
-%Cas d'égalité
-%TODO décommenter l'égalité quand la détection de la grille remplie sera faite.
-%gameOver(Grille, _, 'Draw'):- grilleEstRemplie(Grille).
+	valeurGrille(Grille,numCol,Y,Winner),
+	valeurGrille(Grille,numCol,Y-1,Winner),
+	valeurGrille(Grille,numCol,Y-2,Winner),
+	valeurGrille(Grille,numCol,Y-3,Winner),!.
+%Cas d'égalité quand la grille est remplie
+gameOver(Grille,_,'Égalité'):-grilleRemplie(Grille).		
 %%%% fin GameOver %%%%
 
-%%%% grilleEstRemplie
+%%%% grilleRemplie
 % Cette règle devient vraie si la grille est entièrement remplie et qu'aucun coup supplémentaire ne peut y être joué.
-%grilleEstRemplie([H|T]|):- nth0(6,H,Y),nonvar(Y),isfull(T).
-%TODO
+grilleRemplie(Grille):-
+	nth0(1,Grille,Col1),colonneRemplie(Col1),
+	nth0(2,Grille,Col2),colonneRemplie(Col2),
+	nth0(3,Grille,Col3),colonneRemplie(Col3),
+	nth0(4,Grille,Col4),colonneRemplie(Col4),
+	nth0(5,Grille,Col5),colonneRemplie(Col5),
+	nth0(6,Grille,Col6),colonneRemplie(Col6),
+	nth0(7,Grille,Col7),colonneRemplie(Col7).
