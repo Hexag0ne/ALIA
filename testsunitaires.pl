@@ -39,11 +39,11 @@ testGameOver :-
 	gameOver([['n'],['n','x'],['n','x'],['n','x'],['n','x'],['n'],['n'],['n'],['n']],2,'x'), %Cas horizontal vers la droite 2
 	gameOver([['n'],['n','x'],['n','x'],['n','x'],['n','x'],['n'],['n'],['n'],['n']],4,'x'), %Cas horizontal vers la gauche
 	gameOver([['n'],['n','x'],['n','x'],['n','x'],['n','x'],['n'],['n'],['n'],['n']],3,'x'), %Cas horizontal vers la gauche 2
-	gameOver([['n'],['n','x'],['n',_,'x'],['n',_,_,'x'],['n',_,_,_,'x'],['n'],['n'],['n'],['n']],1,'x')), %Cas diagonale montante vers la droite
-	gameOver([['n'],['n','x'],['n',_,'x'],['n',_,_,'x'],['n',_,_,_,'x'],['n'],['n'],['n'],['n']],2,'x')), %Cas diagonale montante vers la droite 2
-	gameOver([['n'],['n','x'],['n',_,'x'],['n',_,_,'x'],['n',_,_,_,'x'],['n'],['n'],['n'],['n']],3,'x')), %Cas diagonale montante vers la droite 3
-	gameOver([['n'],['n','x'],['n',_,'x'],['n',_,_,'x'],['n',_,_,_,'x'],['n'],['n'],['n'],['n']],4,'x')), %Cas diagonale montante vers la droite 4
-	gameOver([['n'],['n',_,_,_,'x'],['n',_,_,'x'],['n',_,'x'],['n','x'],['n'],['n'],['n'],['n']],1,'x')), %Cas diagonale montante vers la gauche
-	gameOver([['n'],['n',_,_,_,'x'],['n',_,_,'x'],['n',_,'x'],['n','x'],['n'],['n'],['n'],['n']],2,'x')), %Cas diagonale montante vers la gauche 2
-	gameOver([['n'],['n',_,_,_,'x'],['n',_,_,'x'],['n',_,'x'],['n','x'],['n'],['n'],['n'],['n']],3,'x')), %Cas diagonale montante vers la gauche 3
-	gameOver([['n'],['n',_,_,_,'x'],['n',_,_,'x'],['n',_,'x'],['n','x'],['n'],['n'],['n'],['n']],4,'x')), %Cas diagonale montante vers la gauche 4
+	gameOver([['n'],['n','x'],['n',_,'x'],['n',_,_,'x'],['n',_,_,_,'x'],['n'],['n'],['n'],['n']],1,'x'), %Cas diagonale montante vers la droite
+	gameOver([['n'],['n','x'],['n',_,'x'],['n',_,_,'x'],['n',_,_,_,'x'],['n'],['n'],['n'],['n']],2,'x'), %Cas diagonale montante vers la droite 2
+	gameOver([['n'],['n','x'],['n',_,'x'],['n',_,_,'x'],['n',_,_,_,'x'],['n'],['n'],['n'],['n']],3,'x'), %Cas diagonale montante vers la droite 3
+	gameOver([['n'],['n','x'],['n',_,'x'],['n',_,_,'x'],['n',_,_,_,'x'],['n'],['n'],['n'],['n']],4,'x'), %Cas diagonale montante vers la droite 4
+	gameOver([['n'],['n',_,_,_,'x'],['n',_,_,'x'],['n',_,'x'],['n','x'],['n'],['n'],['n'],['n']],1,'x'), %Cas diagonale montante vers la gauche
+	gameOver([['n'],['n',_,_,_,'x'],['n',_,_,'x'],['n',_,'x'],['n','x'],['n'],['n'],['n'],['n']],2,'x'), %Cas diagonale montante vers la gauche 2
+	gameOver([['n'],['n',_,_,_,'x'],['n',_,_,'x'],['n',_,'x'],['n','x'],['n'],['n'],['n'],['n']],3,'x'), %Cas diagonale montante vers la gauche 3
+	gameOver([['n'],['n',_,_,_,'x'],['n',_,_,'x'],['n',_,'x'],['n','x'],['n'],['n'],['n'],['n']],4,'x'). %Cas diagonale montante vers la gauche 4
