@@ -54,28 +54,32 @@ afficherGrille(Grille) :- X is 1, Y is 7, afficherCol(Grille,X,Y).
 
 %Cas Diagonale droite montante 1ère position 
 gameOver(Grille,ColonneJouee,Winner):-
-	proper_length(ColonneJouee, Z), Y is Z-1,
+    nth0(ColonneJouee, Grille,Colonne),
+	proper_length(Colonne, Z), Y is Z-1,
 	valeurGrille(Grille,ColonneJouee,Y,Winner),
 	valeurGrille(Grille,ColonneJouee+1,Y+1,Winner),
 	valeurGrille(Grille,ColonneJouee+2,Y+2,Winner),
 	valeurGrille(Grille,ColonneJouee+3,Y+3,Winner),!.
 %Cas Diagonale droite montante 2ème position 
 gameOver(Grille,ColonneJouee,Winner):-
-	proper_length(ColonneJouee, Z), Y is Z-1,
+	nth0(ColonneJouee, Grille,Colonne),
+	proper_length(Colonne, Z), Y is Z-1,
 	valeurGrille(Grille,ColonneJouee,Y,Winner),
 	valeurGrille(Grille,ColonneJouee-1,Y-1,Winner),
 	valeurGrille(Grille,ColonneJouee+1,Y+1,Winner),
 	valeurGrille(Grille,ColonneJouee+2,Y+2,Winner),!.
 %Cas Diagonale droite montante 3ème position
 gameOver(Grille,ColonneJouee,Winner):-
-	proper_length(ColonneJouee, Z), Y is Z-1,
+	nth0(ColonneJouee, Grille,Colonne),
+	proper_length(Colonne, Z), Y is Z-1,
 	valeurGrille(Grille,ColonneJouee,Y,Winner),
 	valeurGrille(Grille,ColonneJouee-1,Y-1,Winner),
 	valeurGrille(Grille,ColonneJouee-2,Y-2,Winner),
 	valeurGrille(Grille,ColonneJouee+1,Y+1,Winner),!.
 %Cas diagonale droite montante 4ème position
 gameOver(Grille,ColonneJouee,Winner):-
-	proper_length(ColonneJouee, Z), Y is Z-1,
+	nth0(ColonneJouee, Grille,Colonne),
+	proper_length(Colonne, Z), Y is Z-1,
 	valeurGrille(Grille,ColonneJouee,Y,Winner),
 	valeurGrille(Grille,ColonneJouee-1,Y-1,Winner),
 	valeurGrille(Grille,ColonneJouee-2,Y-2,Winner),
@@ -83,28 +87,32 @@ gameOver(Grille,ColonneJouee,Winner):-
 
 %Cas diagonale gauche montante 1ère position
 gameOver(Grille,ColonneJouee,Winner):-
-	proper_length(ColonneJouee, Z), Y is Z-1,
+	nth0(ColonneJouee, Grille,Colonne),
+	proper_length(Colonne, Z), Y is Z-1,
 	valeurGrille(Grille,ColonneJouee,Y,Winner),
 	valeurGrille(Grille,ColonneJouee-1,Y+1,Winner),
 	valeurGrille(Grille,ColonneJouee-2,Y+2,Winner),
 	valeurGrille(Grille,ColonneJouee-3,Y+3,Winner),!.
 %Cas diagonale gauche montante 2ème position
 gameOver(Grille,ColonneJouee,Winner):-
-	proper_length(ColonneJouee, Z), Y is Z-1,
+	nth0(ColonneJouee, Grille,Colonne),
+	proper_length(Colonne, Z), Y is Z-1,
 	valeurGrille(Grille,ColonneJouee,Y,Winner),
 	valeurGrille(Grille,ColonneJouee-1,Y+1,Winner),
 	valeurGrille(Grille,ColonneJouee-2,Y+2,Winner),
 	valeurGrille(Grille,ColonneJouee+1,Y-1,Winner),!.
 %Cas diagonale gauche montante 3ème position
 gameOver(Grille,ColonneJouee,Winner):-
-	proper_length(ColonneJouee, Z), Y is Z-1,
+	nth0(ColonneJouee, Grille,Colonne),
+	proper_length(Colonne, Z), Y is Z-1,
 	valeurGrille(Grille,ColonneJouee,Y,Winner),
 	valeurGrille(Grille,ColonneJouee-1,Y+1,Winner),
 	valeurGrille(Grille,ColonneJouee+1,Y-1,Winner),
 	valeurGrille(Grille,ColonneJouee+2,Y-2,Winner),!.
 %Cas diagonale gauche montante 4ème position
 gameOver(Grille,ColonneJouee,Winner):-
-	proper_length(ColonneJouee, Z), Y is Z-1,
+	nth0(ColonneJouee, Grille,Colonne),
+	proper_length(Colonne, Z), Y is Z-1,
 	valeurGrille(Grille,ColonneJouee,Y,Winner),
 	valeurGrille(Grille,ColonneJouee-1,Y+1,Winner),
 	valeurGrille(Grille,ColonneJouee-2,Y+2,Winner),
@@ -112,33 +120,38 @@ gameOver(Grille,ColonneJouee,Winner):-
 
 %Cas horizontal 3 à gauche
 gameOver(Grille,ColonneJouee,Winner):-
-	proper_length(ColonneJouee, Z), Y is Z-1,
+	nth0(ColonneJouee, Grille,Colonne),
+	proper_length(Colonne, Z), Y is Z-1,
 	valeurGrille(Grille,ColonneJouee,Y,Winner),
 	valeurGrille(Grille,ColonneJouee-1,Y,Winner),
 	valeurGrille(Grille,ColonneJouee-2,Y,Winner),
 	valuerGrille(Grille,ColonneJouee-3,Y,Winner),!.
 %Cas horizontal 2 à gauche
 gameOver(Grille,ColonneJouee,Winner):-
-	proper_length(ColonneJouee, Z), Y is Z-1,
+	nth0(ColonneJouee, Grille,Colonne),
+	proper_length(Colonne, Z), Y is Z-1,
 	valeurGrille(Grille,ColonneJouee,Y,Winner),
 	valeurGrille(Grille,ColonneJouee+1,Y,Winner),
 	valeurGrille(Grille,ColonneJouee-1,Y,Winner),
 	valeurGrille(Grille,ColonneJouee-2,Y,Winner),!.
 %Cas horizontal 2 à droite
 gameOver(Grille,ColonneJouee,Winner):-
-	proper_length(ColonneJouee, Z), Y is Z-1,
+	nth0(ColonneJouee, Grille,Colonne),
+	proper_length(Colonne, Z), Y is Z-1,
 	valeurGrille(Grille,ColonneJouee,Y,Winner),
 	valeurGrille(Grille,ColonneJouee-1,Y,Winner),
 	valeurGrille(Grille,ColonneJouee+1,Y,Winner),
 	valeurGrille(Grille,ColonneJouee+2,Y,Winner),!.
 %Cas horizontal 3 à droite
 gameOver(Grille,ColonneJouee,Winner):-
-	proper_length(ColonneJouee, Z), Y is Z-1,
+	nth0(ColonneJouee, Grille,Colonne),
+	proper_length(Colonne, Z), Y is Z-1,
 	valeurGrille(Grille,ColonneJouee,Y,Winner),
 	valeurGrille(Grille,ColonneJouee+1,Y,Winner),
 	valeurGrille(Grille,ColonneJouee+2,Y,Winner),
 	valuerGrille(Grille,ColonneJouee+3,Y,Winner),!.
 %Cas vertical
+<<<<<<< HEAD
 gameOver(Grille,numCol,Winner):-
 	nth0(numCol,Grille,ColonneJouee),
 	proper_length(ColonneJouee, Z), Y is Z-1,
