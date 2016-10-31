@@ -91,7 +91,7 @@ gameOver(Grille,ColonneJouee,Winner):-
 	valeurGrille(Grille,C,F,Winner),!.
 %Cas diagonale gauche montante 2ème position
 gameOver(Grille,ColonneJouee,Winner):-
-	nth0(ColonneJouee, Grille,Colonne),
+	nth1(ColonneJouee, Grille,Colonne),
 	proper_length(Colonne, Y), A is ColonneJouee-1, B is ColonneJouee-2, C is ColonneJouee+1, D is Y+1, E is Y+2, F is Y-1,
 	valeurGrille(Grille,A,D,Winner),
 	valeurGrille(Grille,B,E,Winner),
