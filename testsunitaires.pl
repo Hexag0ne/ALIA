@@ -2,6 +2,7 @@
 
 :- use_module(puissance4).
 :- use_module(util).
+:- use_module(play).
 
 %Lance touts les tests.
 %Si le test passe, affiche OK ; KO dans le cas contraire.
@@ -9,7 +10,8 @@ tests :-
 	write('joueurSuivant:'),(testJoueurSuivant -> write('OK') ; write('KO')),nl,
 	write('ajouterCase  :'),(testAjouterCase -> write('OK') ; write('KO')),nl,
 	write('valeurGrille :'),(testValeurGrille -> write('OK') ; write('KO')),nl,
-	write('gameOver     :'),(testGameOver -> write('OK') ; write('KO')),nl.
+	write('gameOver     :'),(testGameOver -> write('OK') ; write('KO')),nl,
+	write('coupGagnant  :'),(testCoupGagnant -> write('OK') ; write('KO')),nl.
 				
 %%%% Tests du module Util
 %Test de ajouterCase/3
@@ -50,3 +52,9 @@ testGameOver :-
 	not(gameOver([['x','x','x','x'],[],[],[],[],[],[]],1,'o')),%Pas de victoire pour 'o' !
 	not(gameOver([[],['x'],[],[],[],[],[]],2,'x')). %Pas de victoire, il n'y a qu'un seul pion
 
+%Test de coupGagnant
+testCoupGagnant:-
+	coupGagnant([[x,x,x],[],[],[],[],[],[]],1,x),
+	not(coupGagnant([[],[],[],[],[],[],[]],6,y)),
+	coupGagnant([[x],[x],[x],[],[],[],[]],4,x),
+	not(coupGagnant([[x,o],[x,o],[x,o],[],[],[],[]],4,o)).
