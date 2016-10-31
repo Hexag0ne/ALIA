@@ -2,7 +2,7 @@
 % Ce fichier contient des méthodes utiles pour les autres modules du jeu.
 
 %%% Export du module util et de ses prédicats
-:-module(util, [valeurGrille/4, ajouterCase/3, majColonne/4, colonneRemplie/1]).
+:-module(util, [valeurGrille/4, ajouterCase/3, majColonne/4, colonneRemplie/1, jouerCoup/4]).
 
 %%%% valeurGrille(Grille,Colonne,Ligne,Valeur)
 %Permet de récupérer la valeur contenue dans le tableau de jeu situé dans la colonne et la ligne spécifié. 
@@ -25,6 +25,24 @@ ajouterCase(X,[Y|L1],[Y|L2]):- ajouterCase(X,L1,L2), length([Y|L1],N), N<7 .
 majColonne([_|T], 0, X, [X|T]).
 majColonne([H|T], I, X, [H|R]):- I > -1, NI is I-1, majColonne(T, NI, X, R), !.
 majColonne(L, _, _, L).
+
+%%% JouerCoup(Grille, ColonneJoue, Joueur, NouvGrille)
+% Permet de placer le pion du joueur courant dans la grille actuelle et renvoie la nouvelle grille ainsi formée.
+jouerCoup(ColonneJoue, Joueur, NouvGrille) :-
+	jeu(Grille), %% grille = getGrille()
+	nth1(ColonneJoue, Grille, OldColonne), %% OldColonne = Grille[ColonneJoue]
+	ajouterCase(Joueur, OldColonne, NouvColonne),
+	IndiceCol is ColonneJoue-1,
+	majColonne(Grille, IndiceCol, NouvColonne, NouvGrille). %%utils.pl
+
+%%% JouerCoup(Grille, ColonneJoue, Joueur, NouvGrille)
+% Permet de placer le pion du joueur courant dans la grille actuelle et renvoie la nouvelle grille ainsi formée.
+jouerCoup(ColonneJoue, Joueur, NouvGrille) :-
+	jeu(Grille), %% grille = getGrille()
+	nth1(ColonneJoue, Grille, OldColonne), %% OldColonne = Grille[ColonneJoue]
+	ajouterCase(Joueur, OldColonne, NouvColonne),
+	IndiceCol is ColonneJoue-1,
+	majColonne(Grille, IndiceCol, NouvColonne, NouvGrille). %%utils.pl
 
 % Détermine si une colonne est bien remplie.
 % Dans notre situation, cela signifie que la colonne contient 8 termes

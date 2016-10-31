@@ -44,16 +44,6 @@ tourSuivant(Joueur,_) :-
 %%% init permet de lancer le jeu. Cette règle permet d'initialiser le plateau de jeu et les joueurs. 
 init :- tourSuivant('x',0).
 
-%%% JouerCoup(Grille, ColonneJoue, Joueur, NouvGrille)
-% Permet de placer le pion du joueur courant dans la grille actuelle et renvoie la nouvelle grille ainsi formée.
-% C'est cette fonction qui détermine quel caractère utiliser en fonction du joueur qui est passé en paramètre (humain X, machine O) !
-jouerCoup(ColonneJoue, Joueur, NouvGrille) :-
-	jeu(Grille), %% grille = getGrille()
-	nth1(ColonneJoue, Grille, OldColonne), %% OldColonne = Grille[ColonneJoue]
-	ajouterCase(Joueur, OldColonne, NouvColonne),
-	IndiceCol is ColonneJoue-1,
-	majColonne(Grille, IndiceCol, NouvColonne, NouvGrille). %%utils.pl
-
 %%% SauverCoup(Grille, NouvGrille)
 % Met à jour la grille de jeu dans la base de faits
 sauverCoup(Grille, NouvGrille):-
