@@ -23,6 +23,7 @@ jeu([[],[],[],[],[],[],[]]).
 tourSuivant(Joueur,Colonne) :-
 	joueurSuivant(Winner,Joueur),
 	jeu(Grille),
+	Colonne > 0, 
 	gameOver(Grille,Colonne,Winner),!,
 	write('Game over ! Le gagnant est: ' ),
 	writeln(Winner), nl,
