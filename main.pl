@@ -25,17 +25,18 @@ tourSuivant(Joueur,Colonne) :-
 	jeu(Grille),
 	Colonne > 0, 
 	gameOver(Grille,Colonne,Winner),!,
+	afficherGrille(Grille),
 	write('Game over ! Le gagnant est: ' ),
-	writeln(Winner), nl,
-	afficherGrille(Grille).
+	writeln(Winner), nl.
 
 % Règle générale récursive qui fait jouer les joueurs chacun leur tour
 tourSuivant(Joueur,_) :-
-	write('Nouveau tour pour: '), writeln(Joueur),
 	jeu(Grille), %% grille = getGrille()
 	afficherGrille(Grille), %puissance4.pl
+	write('Nouveau tour pour: '), writeln(Joueur),
 	joue(Joueur, Grille, ColonneJoue), %play.pl
-	jouerCoup(ColonneJoue, Joueur),
+	jouerCoup(ColonneJoue, Joueur, NouvGrille),
+	sauverCoup(Grille,NouvGrille),
 	joueurSuivant(Joueur, NextJoueur), %puissance4.pl
 	tourSuivant(NextJoueur,ColonneJoue).
 
@@ -46,13 +47,12 @@ init :- tourSuivant('x',0).
 %%% JouerCoup(Grille, ColonneJoue, Joueur, NouvGrille)
 % Permet de placer le pion du joueur courant dans la grille actuelle et renvoie la nouvelle grille ainsi formée.
 % C'est cette fonction qui détermine quel caractère utiliser en fonction du joueur qui est passé en paramètre (humain X, machine O) !
-jouerCoup(ColonneJoue, Joueur) :-
+jouerCoup(ColonneJoue, Joueur, NouvGrille) :-
 	jeu(Grille), %% grille = getGrille()
 	nth1(ColonneJoue, Grille, OldColonne), %% OldColonne = Grille[ColonneJoue]
-    ajouterCase(Joueur, OldColonne, NouvColonne),
-    IndiceCol is ColonneJoue-1,
-    majColonne(Grille, IndiceCol, NouvColonne, NouvGrille), %%utils.pl
-    sauverCoup(Grille, NouvGrille).
+	ajouterCase(Joueur, OldColonne, NouvColonne),
+	IndiceCol is ColonneJoue-1,
+	majColonne(Grille, IndiceCol, NouvColonne, NouvGrille). %%utils.pl
 
 %%% SauverCoup(Grille, NouvGrille)
 % Met à jour la grille de jeu dans la base de faits
