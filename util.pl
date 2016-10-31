@@ -37,8 +37,7 @@ jouerCoup(ColonneJoue, Joueur, NouvGrille) :-
 
 %%% JouerCoup(Grille, ColonneJoue, Joueur, NouvGrille)
 % Permet de placer le pion du joueur courant dans la grille actuelle et renvoie la nouvelle grille ainsi formée.
-jouerCoup(ColonneJoue, Joueur, NouvGrille) :-
-	jeu(Grille), %% grille = getGrille()
+jouerCoup(Grille,ColonneJoue, Joueur, NouvGrille) :-
 	nth1(ColonneJoue, Grille, OldColonne), %% OldColonne = Grille[ColonneJoue]
 	ajouterCase(Joueur, OldColonne, NouvColonne),
 	IndiceCol is ColonneJoue-1,

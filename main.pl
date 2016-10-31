@@ -35,7 +35,7 @@ tourSuivant(Joueur,_) :-
 	afficherGrille(Grille), %puissance4.pl
 	write('Nouveau tour pour: '), writeln(Joueur),
 	joue(Joueur, Grille, ColonneJoue), %play.pl
-	jouerCoup(ColonneJoue, Joueur, NouvGrille),
+	jouerCoup(Grille,ColonneJoue, Joueur, NouvGrille),
 	sauverCoup(Grille,NouvGrille),
 	joueurSuivant(Joueur, NextJoueur), %puissance4.pl
 	tourSuivant(NextJoueur,ColonneJoue).
