@@ -34,17 +34,19 @@ testJoueurSuivant :-
 %Test de gameOver
 testGameOver :-
 	gameOver([[_,_,_,_,_,_,_,_],[_,_,_,_,_,_,_,_],[_,_,_,_,_,_,_,_],[_,_,_,_,_,_,_,_],[_,_,_,_,_,_,_,_],[_,_,_,_,_,_,_,_],[_,_,_,_,_,_,_,_],[_,_,_,_,_,_,_,_]],1,'Égalité'), % Cas d'égalité
-	not(gameOver([['n'],['n','x'],['n'],['n'],['n'],['n'],['n'],['n'],['n']],1,'x')), %Pas de victoire, il n'y a qu'un seul pion
-	gameOver([['n'],['n','x','x','x','x'],['n'],['n'],['n'],['n'],['n'],['n'],['n']],1,'x'), %Cas vertical
-	gameOver([['n'],['n','x'],['n','x'],['n','x'],['n','x'],['n'],['n'],['n'],['n']],1,'x'), %Cas horizontal vers la droite
-	gameOver([['n'],['n','x'],['n','x'],['n','x'],['n','x'],['n'],['n'],['n'],['n']],2,'x'), %Cas horizontal vers la droite 2
-	gameOver([['n'],['n','x'],['n','x'],['n','x'],['n','x'],['n'],['n'],['n'],['n']],4,'x'), %Cas horizontal vers la gauche
-	gameOver([['n'],['n','x'],['n','x'],['n','x'],['n','x'],['n'],['n'],['n'],['n']],3,'x'), %Cas horizontal vers la gauche 2
-	gameOver([['n'],['n','x'],['n',_,'x'],['n',_,_,'x'],['n',_,_,_,'x'],['n'],['n'],['n'],['n']],1,'x'), %Cas diagonale montante vers la droite
-	gameOver([['n'],['n','x'],['n',_,'x'],['n',_,_,'x'],['n',_,_,_,'x'],['n'],['n'],['n'],['n']],2,'x'), %Cas diagonale montante vers la droite 2
-	gameOver([['n'],['n','x'],['n',_,'x'],['n',_,_,'x'],['n',_,_,_,'x'],['n'],['n'],['n'],['n']],3,'x'), %Cas diagonale montante vers la droite 3
-	gameOver([['n'],['n','x'],['n',_,'x'],['n',_,_,'x'],['n',_,_,_,'x'],['n'],['n'],['n'],['n']],4,'x'), %Cas diagonale montante vers la droite 4
-	gameOver([['n'],['n',_,_,_,'x'],['n',_,_,'x'],['n',_,'x'],['n','x'],['n'],['n'],['n'],['n']],1,'x'), %Cas diagonale montante vers la gauche
-	gameOver([['n'],['n',_,_,_,'x'],['n',_,_,'x'],['n',_,'x'],['n','x'],['n'],['n'],['n'],['n']],2,'x'), %Cas diagonale montante vers la gauche 2
-	gameOver([['n'],['n',_,_,_,'x'],['n',_,_,'x'],['n',_,'x'],['n','x'],['n'],['n'],['n'],['n']],3,'x'), %Cas diagonale montante vers la gauche 3
-	gameOver([['n'],['n',_,_,_,'x'],['n',_,_,'x'],['n',_,'x'],['n','x'],['n'],['n'],['n'],['n']],4,'x'). %Cas diagonale montante vers la gauche 4
+	gameOver([['x','x','x','x'],[],[],[],[],[],[]],1,'x'), %Victoire verticale
+	gameOver([[_,_,_,'x'],[_,_,'x'],[_,'x'],['x'],[],[],[]],1,'x'),	%Victoire diagonale vers le bas à droite
+	gameOver([[_,_,_,'x'],[_,_,'x'],[_,'x'],['x'],[],[],[]],2,'x'),	%Victoire diagonale vers le bas à droite 2
+	gameOver([[_,_,_,'x'],[_,_,'x'],[_,'x'],['x'],[],[],[]],3,'x'),	%Victoire diagonale vers le haut à gauche 3
+	gameOver([[_,_,_,'x'],[_,_,'x'],[_,'x'],['x'],[],[],[]],4,'x'),	%Victoire diagonale vers le haut à gauche 4
+	gameOver([['x'],['x'],['x'],['x'],[],[],[]],1,'x'), %Victoire horizontale
+	gameOver([['x'],['x'],['x'],['x'],[],[],[]],2,'x'), %Victoire horizontale
+	gameOver([['x'],['x'],['x'],['x'],[],[],[]],3,'x'), %Victoire horizontale
+	gameOver([['x'],['x'],['x'],['x'],[],[],[]],4,'x'), %Victoire horizontale
+	gameOver([['x'],[_,'x'],[_,_,'x'],[_,_,_,'x'],[],[],[]],1,'x'), %Victoire deuxième diagonale
+	gameOver([['x'],[_,'x'],[_,_,'x'],[_,_,_,'x'],[],[],[]],2,'x'), %Victoire deuxième diagonale
+	gameOver([['x'],[_,'x'],[_,_,'x'],[_,_,_,'x'],[],[],[]],3,'x'), %Victoire deuxième diagonale
+	gameOver([['x'],[_,'x'],[_,_,'x'],[_,_,_,'x'],[],[],[]],4,'x'), %Victoire deuxième diagonale
+	not(gameOver([['x','x','x','x'],[],[],[],[],[],[]],1,'o')),%Pas de victoire pour 'o' !
+	not(gameOver([[],['x'],[],[],[],[],[]],2,'x')). %Pas de victoire, il n'y a qu'un seul pion
+
