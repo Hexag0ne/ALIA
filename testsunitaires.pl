@@ -7,11 +7,13 @@
 %Lance touts les tests.
 %Si le test passe, affiche OK ; KO dans le cas contraire.
 tests :-
-	write('joueurSuivant:'),(testJoueurSuivant -> write('OK') ; write('KO')),nl,
-	write('ajouterCase  :'),(testAjouterCase -> write('OK') ; write('KO')),nl,
-	write('valeurGrille :'),(testValeurGrille -> write('OK') ; write('KO')),nl,
-	write('gameOver     :'),(testGameOver -> write('OK') ; write('KO')),nl,
-	write('coupGagnant  :'),(testCoupGagnant -> write('OK') ; write('KO')),nl.
+	write('joueurSuivant  :'),(testJoueurSuivant -> write('OK') ; write('KO')),nl,
+	write('ajouterCase    :'),(testAjouterCase -> write('OK') ; write('KO')),nl,
+	write('valeurGrille   :'),(testValeurGrille -> write('OK') ; write('KO')),nl,
+	write('gameOver       :'),(testGameOver -> write('OK') ; write('KO')),nl,
+	write('coupGagnant    :'),(testCoupGagnant -> write('OK') ; write('KO')),nl,
+	write('majColonne     :'),(testMajColonne -> write('OK') ; write('KO')),nl,
+	write('colonneRemplie :'),(testColonneRemplie -> write('OK') ; write('KO')),nl.
 				
 %%%% Tests du module Util
 %Test de ajouterCase/3
@@ -24,6 +26,17 @@ testAjouterCase :-
 testValeurGrille :-
 	valeurGrille([['x'],[],[],[],[],[],[]],1,1,'x'),
 	not(valeurGrille([['x'],[],[],[],[],[],[]],5,1,'x')).
+
+%Test de majColonne/4
+testMajColonne :-
+	majColonne([[],[],[],[],[],[],[]],0,[x],[[x],[],[],[],[],[],[]]),
+	majColonne([[],[],[z],[],[],[],[]],3,[a,b,c],[[],[],[z],[a,b,c],[],[],[]]),
+	majColonne([[],[],[z],[],[],[],[]],2,[a,b,c],[[],[],[a,b,c],[],[],[],[]]).
+
+%Test de colonneRemplie/2
+testColonneRemplie :-
+	colonneRemplie([[a,b,a,b,a,a],[],[],[],[],[],[]],1),
+	not(colonneRemplie([[_,_,_,_,_,_],[],[],[],[],[],[]],2)).
 
 %%%% Tests du module puissance4
 %Test de joueurSuivant/2
