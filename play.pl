@@ -2,7 +2,7 @@
 % Ce fichier contient les règles d'intelligence artificielle permettant à la fois à la machine et au joueur 'humain' de décider de leurs coups.
 
 %%% Export du module play et de ses prédicats
-:-module('play', [joue/3,coupGagnant/3,coupPerdant/3]).
+:-module('play', [joue/3,coupGagnant/3,coupPerdant/3,coupGagnant/2]).
 
 :-use_module('puissance4.pl').
 :-use_module('util.pl').
@@ -18,7 +18,39 @@ joue('o', _, ColonneJoue):-
 % Première règle : si l'IA peut gagner alors elle joue dans cette colonne
 joue('a',Grille,ColonneJoue):-
 	coupGagnant(Grille,ColonneJoue,'a'),!.
-% Deuxième règle : si l'IA ne peut pas gagner alors elle choisie de jouer dans la colonne la plus au centre
+
+% Deuxième règle : si l'IA joue dans une colonne la plus près du centre possible, à condition que cela ne permette pas à l'adversaire de gagner immédiatement
+joue('a',Grille,ColonneJoue):-
+	not(colonneRemplie(Grille,4)),
+	not(coupPerdant(Grille,4,'a')),
+	ColonneJoue is 4.
+joue('a',Grille,ColonneJoue):-
+	not(colonneRemplie(Grille,5)),
+	not(coupPerdant(Grille,5,'a')),
+	 ColonneJoue is 5.
+joue('a',Grille,ColonneJoue):-
+	not(colonneRemplie(Grille,3)),
+	not(coupPerdant(Grille,3,'a')),
+	    ColonneJoue is 3.
+joue('a',Grille,ColonneJoue):-
+	not(colonneRemplie(Grille,6)),
+	not(coupPerdant(Grille,6,'a')),
+	ColonneJoue is 6.
+joue('a',Grille,ColonneJoue):-
+	not(colonneRemplie(Grille,2)),
+	not(coupPerdant(Grille,2,'a')),
+	ColonneJoue is 2.
+joue('a',Grille,ColonneJoue):-
+	not(colonneRemplie(Grille,7)),
+	not(coupPerdant(Grille,7,'a')),
+	ColonneJoue is 7.
+joue('a',Grille,ColonneJoue):-
+	not(colonneRemplie(Grille,1)),
+	not(coupPerdant(Grille,1,'a')),
+	ColonneJoue is 1.
+
+	   
+% Troisième règle : si l'IA ne peut pas gagner alors elle choisie de jouer dans la colonne la plus au centre
 joue('a',Grille,ColonneJoue):-
 	not(colonneRemplie(Grille,4)),
 	ColonneJoue is 4.
@@ -60,4 +92,4 @@ coupGagnant(Grille,Joueur):- coupGagnant(Grille,7,Joueur).
 coupPerdant(Grille,ColonneJoue,Joueur) :-
 	jouerCoup(Grille,ColonneJoue,Joueur,Z),
 	joueurSuivant(Joueur,Suivant),
-	coupGagnant(Z,Suivant).
+	coupGagnant(Z,_,Suivant).
