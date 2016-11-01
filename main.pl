@@ -45,7 +45,7 @@ init :- assert(jeu([[],[],[],[],[],[],[]])), tourSuivant('x',0).
 
 ia :- assert(jeu([[],[],[],[],[],[],[]])), tourSuivant('a',0).
 
-alea :- tourSuivant('R',0).
+alea :- assert(jeu([[],[],[],[],[],[],[]])), tourSuivant('R',0).
 
 %%% SauverCoup(Grille, NouvGrille)
 % Met à jour la grille de jeu dans la base de faits
