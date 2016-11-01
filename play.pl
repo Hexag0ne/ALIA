@@ -21,6 +21,24 @@ joue('a',Grille,ColonneJoue):-
 	coupGagnant(Grille,ColonneJoue,'a'),!.
 % Deuxième règle : si l'IA ne peut pas gagner alors elle choisie de jouer dans la colonne la plus au centre
 joue('a',Grille,ColonneJoue):-
+	not(colonneRemplie(Grille,4)),
+	ColonneJoue is 4.
+joue('a',Grille,ColonneJoue):-
+	not(colonneRemplie(Grille,5)),
+	ColonneJoue is 5.
+joue('a',Grille,ColonneJoue):-
+	not(colonneRemplie(Grille,3)),
+	ColonneJoue is 3.
+joue('a',Grille,ColonneJoue):-
+	not(colonneRemplie(Grille,6)),
+	ColonneJoue is 6.
+joue('a',Grille,ColonneJoue):-
+	not(colonneRemplie(Grille,2)),
+	ColonneJoue is 2.
+joue('a',Grille,ColonneJoue):-
+	not(colonneRemplie(Grille,7)),
+	ColonneJoue is 7.
+joue('a',Grille,ColonneJoue):-
 	not(colonneRemplie(Grille,1)),
 	ColonneJoue is 1.
 
