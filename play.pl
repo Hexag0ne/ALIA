@@ -14,7 +14,6 @@ joue('x', _, ColonneJoue):-
 joue('o', _, ColonneJoue):-
     write('Choisissez une colonne [1-7]: '), read(ColonneJoue), integer(ColonneJoue), ColonneJoue < 8, ColonneJoue > 0.
 
-
 				%Coups de l'IA 'opportuniste'
 % Première règle : si l'IA peut gagner alors elle joue dans cette colonne
 joue('a',Grille,ColonneJoue):-

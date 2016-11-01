@@ -37,8 +37,8 @@ jouerCoup(Grille,ColonneJoue, Joueur, NouvGrille) :-
 % Détermine si une colonne est bien remplie.
 % Dans notre situation, cela signifie que la colonne contient 8 termes
 colonneRemplie(Colonne):-
-	proper_length(Colonne,8).
+	proper_length(Colonne,6).
 
 colonneRemplie(Grille,Colonne) :-
-	nth1(Colonne,Grille,nCol),
-	colonneRemplie(nCol).
+	nth1(Colonne,Grille,NCol),
+	colonneRemplie(NCol).
