@@ -14,12 +14,17 @@ joueurSuivant('o','x').
 joueurSuivant('a','O').
 joueurSuivant('O','a').
 
+joueurSuivant('R','Z').
+joueurSuivant('Z','R').
+
 %%% AfficherElem
 %Predicat qui permet de dessiner un élément
 afficherElem(H) :- H = 'o', write('o'),  write(' | ').
 afficherElem(H) :- H = 'x', write('x'),  write(' | ').
 afficherElem(H) :- H = 'a', write('a'), write(' | ').
 afficherElem(H) :- H = 'O',write('O'),write(' | ').
+afficherElem(H) :- H = 'R', write('R'), write(' | ').
+afficherElem(H) :- H = 'Z',write('Z'),write(' | ').
 afficherElem(H) :- H \= 'x', H \= 'o', write(' '),  write(' | ').
 
 %%% AfficherLigne
