@@ -63,7 +63,8 @@ testGameOver :-
 	gameOver([['x'],[_,'x'],[_,_,'x'],[_,_,_,'x'],[],[],[]],3,'x'), %Victoire deuxième diagonale
 	gameOver([['x'],[_,'x'],[_,_,'x'],[_,_,_,'x'],[],[],[]],4,'x'), %Victoire deuxième diagonale
 	not(gameOver([['x','x','x','x'],[],[],[],[],[],[]],1,'o')),%Pas de victoire pour 'o' !
-	not(gameOver([[],['x'],[],[],[],[],[]],2,'x')). %Pas de victoire, il n'y a qu'un seul pion
+	not(gameOver([[],['x'],[],[],[],[],[]],2,'x')), %Pas de victoire, il n'y a qu'un seul pion
+	not(gameOver([['x','x','x','o'],[],[],[],[],[],[]],1,'x')). %Ce test ne marche pas.
 
 %Test de coupGagnant
 testCoupGagnant:-
