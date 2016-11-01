@@ -15,6 +15,17 @@ joue('o', _, ColonneJoue):-
     write('Choisissez une colonne [1-7]: '), read(ColonneJoue), integer(ColonneJoue), ColonneJoue < 8, ColonneJoue > 0.
 
 
+				%Coups de l'IA 'opportuniste'
+% Première règle : si l'IA peut gagner alors elle joue dans cette colonne
+joue('a',Grille,ColonneJoue):-
+	coupGagnant(Grille,ColonneJoue,'a'),!.
+% Deuxième règle : si l'IA ne peut pas gagner alors elle choisie de jouer dans la colonne la plus au centre
+joue('a',Grille,ColonneJoue):-
+	not(colonneRemplie(Grille,1)),
+	ColonneJoue is 1.
+
+joue('O',_,ColonneJoue) :- joue('x',_,ColonneJoue).
+
 %Renvoie vrai dans le cas où si le joueur place son pion dans la colonne ColonneJoue alors celui-ci remporte immédiatement la partie
 coupGagnant(Grille,ColonneJoue,Joueur) :-
 	jouerCoup(Grille,ColonneJoue,Joueur,Z),
