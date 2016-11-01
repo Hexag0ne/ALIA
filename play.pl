@@ -2,11 +2,8 @@
 % Ce fichier contient les règles d'intelligence artificielle permettant à la fois à la machine et au joueur 'humain' de décider de leurs coups.
 
 %%% Export du module play et de ses prédicats
-<<<<<<< HEAD
-:-module('play', [joue/3,coupGagnant/3,coupPerdant/3,coupGagnant/2]).
-=======
+
 :-module('play', [joue/3,coupGagnant/3,coupGagnant/2,coupPerdant/3]).
->>>>>>> 5ac5f1684989a5c72bf9bf63ccc8279b8dc620a1
 
 :-use_module('puissance4.pl').
 :-use_module('util.pl').
