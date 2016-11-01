@@ -44,6 +44,8 @@ tourSuivant(Joueur,_) :-
 %%% init permet de lancer le jeu. Cette règle permet d'initialiser le plateau de jeu et les joueurs. 
 init :- tourSuivant('x',0).
 
+ia :- tourSuivant('a',0).
+
 %%% SauverCoup(Grille, NouvGrille)
 % Met à jour la grille de jeu dans la base de faits
 sauverCoup(Grille, NouvGrille):-
