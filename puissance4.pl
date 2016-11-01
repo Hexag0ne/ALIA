@@ -17,6 +17,12 @@ joueurSuivant('O','a').
 joueurSuivant('R','Z').
 joueurSuivant('Z','R').
 
+joueurSuivant('P','M').
+joueurSuivant('M','P').
+
+joueurSuivant('I','K').
+joueurSuivant('K','I').
+
 %%% AfficherElem
 %Predicat qui permet de dessiner un élément
 afficherElem(H) :- H = 'o', write('o'),  write(' | ').

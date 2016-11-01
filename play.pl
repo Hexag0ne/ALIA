@@ -99,3 +99,11 @@ coupPerdant(Grille,ColonneJoue,Joueur) :-
 	jouerCoup(Grille,ColonneJoue,Joueur,Z),
 	joueurSuivant(Joueur,Suivant),
 	coupGagnant(Z,Suivant).
+
+%Comportement des joueurs dans le VS des IA
+%Match aller
+joue('P',Grille,ColonneJoue):-joue('R',Grille,ColonneJoue).
+joue('M',Grille,ColonneJoue):-joue('a',Grille,ColonneJoue).
+%Match retour
+joue('I',Grille,ColonneJoue):-joue('R',Grille,ColonneJoue).
+joue('K',Grille,ColonneJoue):-joue('a',Grille,ColonneJoue).

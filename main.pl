@@ -47,6 +47,9 @@ ia :- assert(jeu([[],[],[],[],[],[],[]])), tourSuivant('a',0).
 
 alea :- assert(jeu([[],[],[],[],[],[],[]])), tourSuivant('R',0).
 
+vsiaa :- assert(jeu([[],[],[],[],[],[],[]])), tourSuivant('P',0).
+vsiar :- assert(jeu([[],[],[],[],[],[],[]])), tourSuivant('K',0).
+
 %%% SauverCoup(Grille, NouvGrille)
 % Met à jour la grille de jeu dans la base de faits
 sauverCoup(Grille, NouvGrille):-
