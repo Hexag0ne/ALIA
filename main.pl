@@ -46,6 +46,8 @@ init :- tourSuivant('x',0).
 
 ia :- tourSuivant('a',0).
 
+alea :- tourSuivant('R',0).
+
 %%% SauverCoup(Grille, NouvGrille)
 % Met à jour la grille de jeu dans la base de faits
 sauverCoup(Grille, NouvGrille):-

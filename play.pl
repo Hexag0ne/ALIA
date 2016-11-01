@@ -76,6 +76,12 @@ joue('a',Grille,ColonneJoue):-
 
 joue('O',_,ColonneJoue) :- joue('x',_,ColonneJoue).
 
+%Règle de jeu pour l'intelligence artificielle aléatoire
+joue('R',Grille,ColonneJoue):-
+	repeat,
+	ColonneJoue is random(7)+1.
+joue('Z',_,ColonneJoue):-joue('x',_,ColonneJoue).
+	
 %Renvoie vrai dans le cas où si le joueur place son pion dans la colonne ColonneJoue alors celui-ci remporte immédiatement la partie
 coupGagnant(Grille,ColonneJoue,Joueur) :-
 	jouerCoup(Grille,ColonneJoue,Joueur,Z),
@@ -92,4 +98,4 @@ coupGagnant(Grille,Joueur):- coupGagnant(Grille,7,Joueur).
 coupPerdant(Grille,ColonneJoue,Joueur) :-
 	jouerCoup(Grille,ColonneJoue,Joueur,Z),
 	joueurSuivant(Joueur,Suivant),
-	coupGagnant(Z,_,Suivant).
+	coupGagnant(Z,Suivant).
