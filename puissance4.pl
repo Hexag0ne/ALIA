@@ -74,6 +74,7 @@ gameOver(Grille,ColonneJouee,Winner):-
 gameOver(Grille,ColonneJouee,Winner):-
 	nth1(ColonneJouee, Grille,Colonne),
 	proper_length(Colonne, Y), A is ColonneJouee-1, B is ColonneJouee+1, C is ColonneJouee+2, D is Y-1, E is Y+1, F is Y+2,
+	valeurGrille(Grille,ColonneJouee,Y,Winner),
 	valeurGrille(Grille,A,D,Winner),
 	valeurGrille(Grille,B,E,Winner),
 	valeurGrille(Grille,C,F,Winner),!.
@@ -81,6 +82,7 @@ gameOver(Grille,ColonneJouee,Winner):-
 gameOver(Grille,ColonneJouee,Winner):-
 	nth1(ColonneJouee, Grille,Colonne),
 	proper_length(Colonne, Y), A is ColonneJouee-1, B is ColonneJouee-2, C is ColonneJouee+1, D is Y-1, E is Y-2, F is Y+1,
+	valeurGrille(Grille,ColonneJouee,Y,Winner),
 	valeurGrille(Grille,A,D,Winner),
 	valeurGrille(Grille,B,E,Winner),
 	valeurGrille(Grille,C,F,Winner),!.
@@ -88,6 +90,7 @@ gameOver(Grille,ColonneJouee,Winner):-
 gameOver(Grille,ColonneJouee,Winner):-
 	nth1(ColonneJouee, Grille,Colonne),
 	proper_length(Colonne, Y), A is ColonneJouee-1, B is ColonneJouee-2, C is ColonneJouee-3, D is Y-1, E is Y-2, F is Y-3,
+	valeurGrille(Grille,ColonneJouee,Y,Winner),
 	valeurGrille(Grille,A,D,Winner),
 	valeurGrille(Grille,B,E,Winner),
 	valeurGrille(Grille,C,F,Winner),!.
@@ -96,6 +99,7 @@ gameOver(Grille,ColonneJouee,Winner):-
 gameOver(Grille,ColonneJouee,Winner):-
 	nth1(ColonneJouee, Grille,Colonne),
 	proper_length(Colonne, Y), A is ColonneJouee-1, B is ColonneJouee-2, C is ColonneJouee-3, D is Y+1, E is Y+2, F is Y+3,
+	valeurGrille(Grille,ColonneJouee,Y,Winner),
 	valeurGrille(Grille,A,D,Winner),
 	valeurGrille(Grille,B,E,Winner),
 	valeurGrille(Grille,C,F,Winner),!.
@@ -103,6 +107,7 @@ gameOver(Grille,ColonneJouee,Winner):-
 gameOver(Grille,ColonneJouee,Winner):-
 	nth1(ColonneJouee, Grille,Colonne),
 	proper_length(Colonne, Y), A is ColonneJouee-1, B is ColonneJouee-2, C is ColonneJouee+1, D is Y+1, E is Y+2, F is Y-1,
+	valeurGrille(Grille,ColonneJouee,Y,Winner),
 	valeurGrille(Grille,A,D,Winner),
 	valeurGrille(Grille,B,E,Winner),
 	valeurGrille(Grille,C,F,Winner),!.
@@ -110,6 +115,7 @@ gameOver(Grille,ColonneJouee,Winner):-
 gameOver(Grille,ColonneJouee,Winner):-
 	nth1(ColonneJouee, Grille,Colonne),
 	proper_length(Colonne, Y), A is ColonneJouee-1, B is ColonneJouee+1, C is ColonneJouee+2, D is Y+1, E is Y-1, F is Y-2,
+	valeurGrille(Grille,ColonneJouee,Y,Winner),
 	valeurGrille(Grille,A,D,Winner),
 	valeurGrille(Grille,B,E,Winner),
 	valeurGrille(Grille,C,F,Winner),!.
@@ -117,6 +123,7 @@ gameOver(Grille,ColonneJouee,Winner):-
 gameOver(Grille,ColonneJouee,Winner):-
 	nth1(ColonneJouee, Grille,Colonne),
 	proper_length(Colonne, Y), A is ColonneJouee-1, B is ColonneJouee-2, C is ColonneJouee-3, D is Y+1, E is Y+2, F is Y+3,
+	valeurGrille(Grille,ColonneJouee,Y,Winner),
 	valeurGrille(Grille,A,D,Winner),
 	valeurGrille(Grille,B,E,Winner),
 	valeurGrille(Grille,C,F,Winner),!.
@@ -125,6 +132,7 @@ gameOver(Grille,ColonneJouee,Winner):-
 gameOver(Grille,ColonneJouee,Winner):-
 	nth1(ColonneJouee, Grille,Colonne),
 	proper_length(Colonne, Y), A is ColonneJouee-1, B is ColonneJouee-2, C is ColonneJouee-3, D is Y, E is Y, F is Y,
+	valeurGrille(Grille,ColonneJouee,Y,Winner),
 	valeurGrille(Grille,A,D,Winner),
 	valeurGrille(Grille,B,E,Winner),
 	valeurGrille(Grille,C,F,Winner),!.
@@ -132,6 +140,7 @@ gameOver(Grille,ColonneJouee,Winner):-
 gameOver(Grille,ColonneJouee,Winner):-
 	nth1(ColonneJouee, Grille,Colonne),
 	proper_length(Colonne, Y), A is ColonneJouee+1, B is ColonneJouee-1, C is ColonneJouee-2, D is Y, E is Y, F is Y,
+	valeurGrille(Grille,ColonneJouee,Y,Winner),
 	valeurGrille(Grille,A,D,Winner),
 	valeurGrille(Grille,B,E,Winner),
 	valeurGrille(Grille,C,F,Winner),!.
@@ -139,6 +148,7 @@ gameOver(Grille,ColonneJouee,Winner):-
 gameOver(Grille,ColonneJouee,Winner):-
 	nth1(ColonneJouee, Grille,Colonne),
 	proper_length(Colonne, Y), A is ColonneJouee-1, B is ColonneJouee+1, C is ColonneJouee+2, D is Y, E is Y, F is Y,
+	valeurGrille(Grille,ColonneJouee,Y,Winner),
 	valeurGrille(Grille,A,D,Winner),
 	valeurGrille(Grille,B,E,Winner),
 	valeurGrille(Grille,C,F,Winner),!.
@@ -146,6 +156,7 @@ gameOver(Grille,ColonneJouee,Winner):-
 gameOver(Grille,ColonneJouee,Winner):-
 	nth1(ColonneJouee, Grille,Colonne),
 	proper_length(Colonne, Y), A is ColonneJouee+1, B is ColonneJouee+2, C is ColonneJouee+3, D is Y, E is Y, F is Y,
+	valeurGrille(Grille,ColonneJouee,Y,Winner),
 	valeurGrille(Grille,A,D,Winner),
 	valeurGrille(Grille,B,E,Winner),
 	valeurGrille(Grille,C,F,Winner),!.
@@ -153,6 +164,7 @@ gameOver(Grille,ColonneJouee,Winner):-
 gameOver(Grille,ColonneJouee,Winner):-
 	nth1(ColonneJouee,Grille,Colonne),
 	proper_length(Colonne, Y), A is ColonneJouee, B is ColonneJouee, C is ColonneJouee, D is Y-1, E is Y-2, F is Y-3,
+	valeurGrille(Grille,ColonneJouee,Y,Winner),
 	valeurGrille(Grille,A,D,Winner),
 	valeurGrille(Grille,B,E,Winner),
 	valeurGrille(Grille,C,F,Winner),!.
