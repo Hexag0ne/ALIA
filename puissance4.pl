@@ -11,10 +11,15 @@
 joueurSuivant('x','o').
 joueurSuivant('o','x').
 
+joueurSuivant('a','O').
+joueurSuivant('O','a').
+
 %%% AfficherElem
 %Predicat qui permet de dessiner un élément
 afficherElem(H) :- H = 'o', write('o'),  write(' | ').
 afficherElem(H) :- H = 'x', write('x'),  write(' | ').
+afficherElem(H) :- H = 'a', write('a'), write(' | ').
+afficherElem(H) :- H = 'O',write('O'),write(' | ').
 afficherElem(H) :- H \= 'x', H \= 'o', write(' '),  write(' | ').
 
 %%% AfficherLigne
@@ -153,10 +158,10 @@ gameOver(Grille,_,'Égalité'):-grilleRemplie(Grille).
 %%%% grilleRemplie
 % Cette règle devient vraie si la grille est entièrement remplie et qu'aucun coup supplémentaire ne peut y être joué.
 grilleRemplie(Grille):-
-	nth0(1,Grille,Col1),colonneRemplie(Col1),
-	nth0(2,Grille,Col2),colonneRemplie(Col2),
-	nth0(3,Grille,Col3),colonneRemplie(Col3),
-	nth0(4,Grille,Col4),colonneRemplie(Col4),
-	nth0(5,Grille,Col5),colonneRemplie(Col5),
-	nth0(6,Grille,Col6),colonneRemplie(Col6),
-	nth0(7,Grille,Col7),colonneRemplie(Col7).
+	colonneRemplie(Grille,1),
+	colonneRemplie(Grille,2),
+	colonneRemplie(Grille,3),
+	colonneRemplie(Grille,4),
+	colonneRemplie(Grille,5),
+	colonneRemplie(Grille,6),
+	colonneRemplie(Grille,7).
