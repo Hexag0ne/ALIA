@@ -32,7 +32,7 @@ jouerCoup(Grille,ColonneJoue, Joueur, NouvGrille) :-
 	nth1(ColonneJoue, Grille, OldColonne), %% OldColonne = Grille[ColonneJoue]
 	ajouterCase(Joueur, OldColonne, NouvColonne),
 	IndiceCol is ColonneJoue-1,
-	majColonne(Grille, IndiceCol, NouvColonne, NouvGrille). %%utils.pl
+	majColonne(Grille, IndiceCol, NouvColonne, NouvGrille), !. %%utils.pl
 
 % Détermine si une colonne est bien remplie.
 % Dans notre situation, cela signifie que la colonne contient 8 termes

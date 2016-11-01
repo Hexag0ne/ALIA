@@ -92,5 +92,4 @@ coupGagnant(Grille,Joueur):- coupGagnant(Grille,7,Joueur).
 coupPerdant(Grille,ColonneJoue,Joueur) :-
 	jouerCoup(Grille,ColonneJoue,Joueur,Z),
 	joueurSuivant(Joueur,Suivant),
-	write(Z), write(Suivant), nl,
 	coupGagnant(Z,Suivant).
