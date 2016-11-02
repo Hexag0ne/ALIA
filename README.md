@@ -1,5 +1,5 @@
-# ALIA
-Prolog project where we aim to simulate the game Connect 4 (Puissance 4), with two competing AIs playing the game.
+# Connect4-AI
+AI project (Prolog) where we aim to simulate the game Connect 4 (Puissance 4), with two competing AIs playing the game.
 
 --
 #TODO
